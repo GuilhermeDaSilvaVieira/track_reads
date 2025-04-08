@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "957610956187",
+    "project_id": "track-reads",
+    "storage_bucket": "track-reads.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:957610956187:android:e0736f6300f9cf5d943d3e",
+        "android_client_info": {
+          "package_name": "com.example.track_reads"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAFxojyE-m7XEUgXakS5y5KiCQ2RdamhRA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

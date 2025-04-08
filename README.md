@@ -14,9 +14,7 @@
 - 📱 **Cross-platform** support for:
   - Android
   - iOS
-  - macOS
-  - Windows
-  - Linux
+  - Web
 
 ## 🛠️ Tech Stack
 - **Flutter**: Frontend (UI, multiplatform support)
