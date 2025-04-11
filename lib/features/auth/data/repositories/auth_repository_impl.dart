@@ -5,7 +5,7 @@ import 'package:track_reads/features/auth/domain/entities/user.dart';
 import 'package:track_reads/features/auth/domain/repositories/auth_repository.dart';
 
 class AuthRepositoryImpl implements AuthRepository {
-  final FirebaseAuthDatasource datasource;
+  final FirebaseAuthDataSource datasource;
 
   AuthRepositoryImpl(this.datasource);
 

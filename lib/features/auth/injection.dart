@@ -14,7 +14,7 @@ Future<void> setupAuthenticationLocator() async {
   sl.registerLazySingleton(() => FirebaseAuth.instance);
 
   // Data source
-  sl.registerLazySingleton(() => FirebaseAuthDatasource(sl()));
+  sl.registerLazySingleton(() => FirebaseAuthDataSource(sl()));
 
   // Repository
   sl.registerLazySingleton<AuthRepository>(() => AuthRepositoryImpl(sl()));

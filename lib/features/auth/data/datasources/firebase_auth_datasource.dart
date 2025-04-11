@@ -1,9 +1,9 @@
 import 'package:firebase_auth/firebase_auth.dart' as fb_auth;
 
-class FirebaseAuthDatasource {
+class FirebaseAuthDataSource {
   final fb_auth.FirebaseAuth firebaseAuth;
 
-  FirebaseAuthDatasource(this.firebaseAuth);
+  FirebaseAuthDataSource(this.firebaseAuth);
 
   Future<fb_auth.User> signInWithEmail(String email, String password) async {
     final result = await firebaseAuth.signInWithEmailAndPassword(
