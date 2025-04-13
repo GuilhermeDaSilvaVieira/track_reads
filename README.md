@@ -29,9 +29,9 @@ Target completion: **April 13, 2025**
 ## 📌 Project Status
 - [x] Planning & Setup
 - [ ] Firebase Auth Integration
-- [ ] Firestore Collections for Book Lists
+- [x] Firestore Collections for Book Lists
 - [ ] Open Library Search Integration
-- [ ] Ratings & Reviews
+- [x] Ratings & Reviews
 - [ ] UI Polishing
 - [ ] Final Testing
 
