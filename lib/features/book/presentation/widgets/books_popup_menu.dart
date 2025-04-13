@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import '../../../auth/presentation/bloc/auth_bloc.dart';
 import '../models/books_menu_option.dart';
 
 class BooksPopupMenu extends StatelessWidget {
@@ -24,7 +26,41 @@ class BooksPopupMenu extends StatelessWidget {
             // Navigate to settings page
             break;
           case BooksMenuOption.logout:
-            // Implement logout functionality
+            showDialog(
+              context: context,
+              builder: (context) {
+                return AlertDialog(
+                  title: Text(
+                    'Log Out',
+                    style: Theme.of(context).textTheme.titleMedium,
+                  ),
+                  content: const Text('Are you sure you want to log out?'),
+                  actions: [
+                    TextButton(
+                      onPressed: () => Navigator.of(context).pop(),
+                      child: const Text('Cancel'),
+                    ),
+                    TextButton(
+                      onPressed: () {
+                        context.read<AuthBloc>().add(const SignOutRequested());
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          const SnackBar(
+                            content: Text('User Sign Out'),
+                          ),
+                        );
+                        Navigator.of(context).pushReplacementNamed('/signin');
+                      },
+                      child: const Text(
+                        'Confirm',
+                        style: TextStyle(
+                          color: Colors.red,
+                        ),
+                      ),
+                    ),
+                  ],
+                );
+              },
+            );
             break;
         }
       },
@@ -62,7 +98,6 @@ class BooksPopupMenu extends StatelessWidget {
           ),
         ),
         PopupMenuItem<BooksMenuOption>(
-          enabled: false,
           value: BooksMenuOption.logout,
           child: ListTile(
             leading: const Icon(Icons.logout),

@@ -1,5 +1,9 @@
+import 'dart:io';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'core/bloc/app_bloc_observer.dart';
@@ -7,6 +11,7 @@ import 'core/presentation/screens/not_found_screen.dart';
 import 'features/auth/presentation/bloc/auth_bloc.dart';
 import 'features/auth/presentation/screens/sign_in_screen.dart';
 import 'features/auth/presentation/screens/sign_up_screen.dart';
+import 'features/auth/presentation/widgets/auth_wrapper.dart';
 import 'features/book/data/models/book_model.dart';
 import 'features/book/presentation/bloc/book_bloc.dart';
 import 'features/book/presentation/screens/book_detail_screen.dart';
@@ -25,6 +30,10 @@ void main() async {
     persistenceEnabled: true,
     cacheSizeBytes: Settings.CACHE_SIZE_UNLIMITED,
   );
+
+  if (kIsWeb) {
+    await FirebaseAuth.instance.setPersistence(Persistence.LOCAL);
+  }
 
   di.setupInjections();
   runApp(const MyApp());
@@ -60,7 +69,7 @@ class MyApp extends StatelessWidget {
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
           useMaterial3: true,
         ),
-        initialRoute: '/signin',
+        home: const AuthWrapper(),
         onGenerateRoute: (settings) {
           // Handle static routes
           if (settings.name == '/signin') {
