@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:track_reads/features/book/domain/entities/book_status.dart';
-import 'package:track_reads/features/book/presentation/bloc/book_bloc.dart';
-import 'package:track_reads/features/book/presentation/widgets/book_card.dart';
+import '../../domain/entities/book_status.dart';
+import '../bloc/book_bloc.dart';
+import 'book_card.dart';
 
 class BookTab extends StatelessWidget {
   final BookStatus status;

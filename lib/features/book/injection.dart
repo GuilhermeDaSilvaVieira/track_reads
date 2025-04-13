@@ -1,13 +1,13 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:get_it/get_it.dart';
-import 'package:track_reads/features/book/application/usecases/create_book.dart';
-import 'package:track_reads/features/book/application/usecases/delete_book.dart';
-import 'package:track_reads/features/book/application/usecases/read_book.dart';
-import 'package:track_reads/features/book/application/usecases/read_books.dart';
-import 'package:track_reads/features/book/application/usecases/update_book.dart';
-import 'package:track_reads/features/book/data/datasources/book_firebase_datasource.dart';
-import 'package:track_reads/features/book/data/repositories/book_repository_impl.dart';
-import 'package:track_reads/features/book/domain/repositories/book_repository.dart';
+import 'application/usecases/create_book.dart';
+import 'application/usecases/delete_book.dart';
+import 'application/usecases/read_book.dart';
+import 'application/usecases/read_books.dart';
+import 'application/usecases/update_book.dart';
+import 'data/datasources/book_firebase_datasource.dart';
+import 'data/repositories/book_repository_impl.dart';
+import 'domain/repositories/book_repository.dart';
 
 final sl = GetIt.instance;
 

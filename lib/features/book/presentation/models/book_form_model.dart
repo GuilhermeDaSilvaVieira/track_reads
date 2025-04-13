@@ -1,5 +1,5 @@
-import 'package:track_reads/features/book/domain/entities/book.dart';
-import 'package:track_reads/features/book/domain/entities/book_status.dart';
+import '../../domain/entities/book.dart';
+import '../../domain/entities/book_status.dart';
 
 class BookFormModel {
   final String title;

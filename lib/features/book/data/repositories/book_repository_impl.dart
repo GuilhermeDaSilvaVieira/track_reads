@@ -1,7 +1,7 @@
-import 'package:track_reads/features/book/data/datasources/book_firebase_datasource.dart';
-import 'package:track_reads/features/book/data/models/book_model.dart';
-import 'package:track_reads/features/book/domain/entities/book.dart';
-import 'package:track_reads/features/book/domain/repositories/book_repository.dart';
+import '../datasources/book_firebase_datasource.dart';
+import '../models/book_model.dart';
+import '../../domain/entities/book.dart';
+import '../../domain/repositories/book_repository.dart';
 
 class BookRepositoryImpl implements BookRepository {
   final BookFirebaseDataSource dataSource;

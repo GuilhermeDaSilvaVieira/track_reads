@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:track_reads/features/book/domain/entities/book_status.dart';
-import 'package:track_reads/features/book/presentation/widgets/book_tab.dart';
-
-import 'package:track_reads/features/book/presentation/widgets/books_popup_menu.dart';
+import '../../domain/entities/book_status.dart';
+import '../widgets/book_tab.dart';
+import '../widgets/books_popup_menu.dart';
 
 class BookScreen extends StatelessWidget {
   const BookScreen({super.key});

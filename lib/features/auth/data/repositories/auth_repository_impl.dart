@@ -1,8 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart' as fb_auth;
-import 'package:track_reads/features/auth/data/datasources/firebase_auth_datasource.dart';
-import 'package:track_reads/features/auth/data/utils/firebase_error_mapper.dart';
-import 'package:track_reads/features/auth/domain/entities/user.dart';
-import 'package:track_reads/features/auth/domain/repositories/auth_repository.dart';
+import '../datasources/firebase_auth_datasource.dart';
+import '../utils/firebase_error_mapper.dart';
+import '../../domain/entities/user.dart';
+import '../../domain/repositories/auth_repository.dart';
 
 class AuthRepositoryImpl implements AuthRepository {
   final FirebaseAuthDataSource datasource;

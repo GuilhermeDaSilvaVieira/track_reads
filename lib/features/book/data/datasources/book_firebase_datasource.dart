@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:track_reads/features/book/data/models/book_model.dart';
+import '../models/book_model.dart';
 
 class BookFirebaseDataSource {
   final FirebaseFirestore firestore;

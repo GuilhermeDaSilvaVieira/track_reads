@@ -1,4 +1,4 @@
-import 'package:track_reads/features/book/domain/entities/book.dart';
+import '../entities/book.dart';
 
 abstract class BookRepository {
   Future<void> createBook(Book book);

@@ -1,8 +1,8 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:track_reads/core/utils/input_validators.dart';
-import 'package:track_reads/features/auth/presentation/bloc/auth_bloc.dart';
+import '../../../../core/utils/input_validators.dart';
+import '../bloc/auth_bloc.dart';
 
 class SignInScreen extends StatefulWidget {
   const SignInScreen({super.key});

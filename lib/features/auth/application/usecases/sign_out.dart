@@ -1,4 +1,4 @@
-import 'package:track_reads/features/auth/domain/repositories/auth_repository.dart';
+import '../../domain/repositories/auth_repository.dart';
 
 class SignOut {
   final AuthRepository repository;

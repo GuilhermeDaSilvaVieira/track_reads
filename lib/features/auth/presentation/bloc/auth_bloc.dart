@@ -1,9 +1,9 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:track_reads/features/auth/application/usecases/sign_in_with_email.dart';
-import 'package:track_reads/features/auth/application/usecases/sign_out.dart';
-import 'package:track_reads/features/auth/application/usecases/sign_up_with_email.dart';
-import 'package:track_reads/features/auth/domain/entities/user.dart';
+import '../../application/usecases/sign_in_with_email.dart';
+import '../../application/usecases/sign_out.dart';
+import '../../application/usecases/sign_up_with_email.dart';
+import '../../domain/entities/user.dart';
 
 part 'auth_event.dart';
 part 'auth_state.dart';

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:track_reads/features/book/presentation/models/books_menu_option.dart';
+import '../models/books_menu_option.dart';
 
 class BooksPopupMenu extends StatelessWidget {
   const BooksPopupMenu({

@@ -1,11 +1,11 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:track_reads/features/book/data/models/book_model.dart';
-import 'package:track_reads/features/book/domain/entities/book_status.dart';
-import 'package:track_reads/features/book/presentation/bloc/book_bloc.dart';
-import 'package:track_reads/features/book/presentation/widgets/details_popup_menu.dart';
-import 'package:track_reads/features/book/presentation/widgets/star_rating.dart';
+import '../../data/models/book_model.dart';
+import '../../domain/entities/book_status.dart';
+import '../bloc/book_bloc.dart';
+import '../widgets/details_popup_menu.dart';
+import '../widgets/star_rating.dart';
 
 class BookDetailScreen extends StatefulWidget {
   const BookDetailScreen({super.key});

@@ -4,13 +4,13 @@ import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:flutter/material.dart';
-import 'package:track_reads/core/utils/input_validators.dart';
-import 'package:track_reads/features/book/data/models/book_model.dart';
-import 'package:track_reads/features/book/domain/entities/book_status.dart';
-import 'package:track_reads/features/book/presentation/bloc/book_bloc.dart';
-import 'package:track_reads/features/book/presentation/models/book_form_model.dart';
-import 'package:track_reads/features/book/presentation/utils/half_step_input_formatter.dart';
-import 'package:track_reads/features/book/presentation/utils/image_validator.dart';
+import '../../../../core/utils/input_validators.dart';
+import '../../data/models/book_model.dart';
+import '../../domain/entities/book_status.dart';
+import '../bloc/book_bloc.dart';
+import '../models/book_form_model.dart';
+import '../utils/half_step_input_formatter.dart';
+import '../utils/image_validator.dart';
 
 class BookModifyScreen extends StatefulWidget {
   final BookModel? book;

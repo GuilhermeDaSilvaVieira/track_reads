@@ -1,5 +1,5 @@
 import 'package:equatable/equatable.dart';
-import 'package:track_reads/features/book/domain/entities/book_status.dart';
+import 'book_status.dart';
 
 class Book extends Equatable {
   final String id;

@@ -1,4 +1,4 @@
-import 'package:track_reads/features/book/domain/repositories/book_repository.dart';
+import '../../domain/repositories/book_repository.dart';
 
 class DeleteBook {
   final BookRepository repository;

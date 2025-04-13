@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:track_reads/features/book/data/models/book_model.dart';
-import 'package:track_reads/features/book/presentation/bloc/book_bloc.dart';
-import 'package:track_reads/features/book/presentation/models/details_menu_option.dart';
+import '../../data/models/book_model.dart';
+import '../bloc/book_bloc.dart';
+import '../models/details_menu_option.dart';
 
 class DetailsPopupMenu extends StatelessWidget {
   final BookModel book;
