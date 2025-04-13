@@ -48,6 +48,7 @@ class BooksPopupMenu extends StatelessWidget {
                             content: Text('User Sign Out'),
                           ),
                         );
+                        Navigator.of(context).pop();
                         Navigator.of(context).pushReplacementNamed('/signin');
                       },
                       child: const Text(
