@@ -35,4 +35,33 @@ class InputValidators {
 
     return null;
   }
+
+  static String? validateTitle(String? value) {
+    if (value == null || value.trim().isEmpty) {
+      return 'Please enter a title';
+    }
+
+    return null;
+  }
+
+  static String? validateAuthor(String? value) {
+    if (value == null || value.trim().isEmpty) {
+      return 'Please enter an author';
+    }
+
+    return null;
+  }
+
+  static String? validateOLID(String? value) {
+    if (value == null || value.trim().isEmpty) {
+      return 'Please enter an OLID (Open Library ID)';
+    }
+
+    final olidRegex = RegExp(r'^OL[1-9]\d*[AMW]$');
+    if (!olidRegex.hasMatch(value.trim())) {
+      return 'Please enter a valid OLID (Open Library ID)';
+    }
+
+    return null;
+  }
 }

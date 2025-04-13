@@ -34,7 +34,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
           }
 
           if (state is AuthSuccess) {
-            Navigator.of(context).pushReplacementNamed('/home');
+            Navigator.of(context).pushReplacementNamed('/books');
           }
         },
         child: BlocBuilder<AuthBloc, AuthState>(
