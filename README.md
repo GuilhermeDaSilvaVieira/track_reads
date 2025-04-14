@@ -11,6 +11,7 @@
   - Finished
 - ⭐ **Ratings & Reviews** for books
 - 🔁 **Real-time Sync** with Firebase Firestore
+- 🎨 Dynamic Theme Switching (Light & Dark Mode)
 - 📱 **Cross-platform** support for:
   - Android
   - iOS
@@ -23,6 +24,16 @@
 - **Firestore**: Cloud NoSQL database for book data
 - **Open Library API**: External book data (search, covers, metadata)
 
+## 📐 Architecture
+TrackReads is built using the Clean Architecture principles combined with a feature-first folder structure. This ensures scalability, testability, and separation of concerns across:
+
+- Domain Layer (Entities, Repositories)
+- Application Layer (Business Logic, Use Cases)
+- Data Layer (Firebase, Open Library API integration, Data Transfer Objects)
+- Presentation Layer (UI, BLoC, Widgets)
+
+Each feature (e.g., Auth, Book) is self-contained and organized under its own directory for better maintainability and scalability.
+
 ## 📌 Project Status
 - [x] Planning & Setup
 - [x] Firebase Auth Integration
@@ -31,6 +42,39 @@
 - [x] Ratings & Reviews
 - [x] UI Polishing
 - [x] Final Testing
+
+## Prerequisites
+
+- Install [Flutter SDK](https://flutter.dev/docs/get-started/install) on your machine.
+- Install [Dart SDK](https://dart.dev/get-dart) if not included with Flutter installation.
+
+## Version Used For Development
+- **Flutter**: 3.27.1
+- **Dart**: 3.6.0
+
+## Installation
+
+To get started with the app, follow the steps below:
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/guilhermedasilvavieira/notx.git
+   ```
+
+2. Navigate into the project directory:
+   ```bash
+   cd notx
+   ```
+
+3. Install dependencies:
+   ```bash
+   flutter pub get
+   ```
+
+4. Run the app on your device or simulator:
+   ```bash
+   flutter run --release
+   ```
 
 ---
 
