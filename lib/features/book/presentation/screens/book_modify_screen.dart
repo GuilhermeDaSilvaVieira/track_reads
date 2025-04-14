@@ -267,6 +267,11 @@ class _BookModifyScreenState extends State<BookModifyScreen> {
 
                         context.read<BookBloc>().add(BookUpdateRequested(book));
                         Navigator.of(context).pop();
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          const SnackBar(
+                            content: Text('Book Updated'),
+                          ),
+                        );
                       }
                       // Add Book From Search
                       else if (widget.book != null && widget.isFromSearch!) {
@@ -289,6 +294,11 @@ class _BookModifyScreenState extends State<BookModifyScreen> {
                         Navigator.of(context).pop();
                         Navigator.of(context).pop();
                         Navigator.of(context).pop();
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          const SnackBar(
+                            content: Text('Book Added From Search'),
+                          ),
+                        );
                       }
                       // Add Book Manually
                       else {
@@ -309,6 +319,12 @@ class _BookModifyScreenState extends State<BookModifyScreen> {
                             .read<BookBloc>()
                             .add(BookCreateRequested(book.toDomainEntity()));
                         Navigator.of(context).pop();
+                        Navigator.of(context).pop();
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          const SnackBar(
+                            content: Text('Book Added Manually'),
+                          ),
+                        );
                       }
                     }
                   },
