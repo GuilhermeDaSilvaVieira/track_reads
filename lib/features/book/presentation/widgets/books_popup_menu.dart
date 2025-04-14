@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import '../../../../core/theme/bloc/theme_bloc.dart';
 import '../../../auth/presentation/bloc/auth_bloc.dart';
 import '../models/books_menu_option.dart';
 
@@ -20,7 +21,7 @@ class BooksPopupMenu extends StatelessWidget {
             // Implement filter functionality
             break;
           case BooksMenuOption.switchTheme:
-            // Implement theme switch functionality
+            context.read<ThemeBloc>().add(ThemeToggle());
             break;
           case BooksMenuOption.settings:
             // Navigate to settings page
@@ -83,7 +84,6 @@ class BooksPopupMenu extends StatelessWidget {
           ),
         ),
         PopupMenuItem<BooksMenuOption>(
-          enabled: false,
           value: BooksMenuOption.switchTheme,
           child: ListTile(
             leading: const Icon(Icons.brightness_6),

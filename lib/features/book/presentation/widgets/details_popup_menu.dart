@@ -30,7 +30,7 @@ class DetailsPopupMenu extends StatelessWidget {
                 return AlertDialog(
                   title: Text(
                     'Delete Book',
-                    style: Theme.of(context).textTheme.titleMedium,
+                    style: Theme.of(context).textTheme.titleLarge,
                   ),
                   content:
                       const Text('Are you sure you want to delete this Book?'),

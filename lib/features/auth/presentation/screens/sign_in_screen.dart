@@ -1,6 +1,8 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import '../../../../core/theme/app_pallete.dart';
+import '../../../../core/theme/bloc/theme_bloc.dart';
 import '../../../../core/utils/input_validators.dart';
 import '../bloc/auth_bloc.dart';
 
@@ -55,13 +57,14 @@ class _SignInScreenState extends State<SignInScreen> {
                       keyboardType: TextInputType.emailAddress,
                       validator: InputValidators.validateEmail,
                     ),
+                    const SizedBox(height: 12),
                     TextFormField(
                       controller: passwordController,
                       decoration: const InputDecoration(labelText: 'Password'),
                       obscureText: true,
                       validator: InputValidators.validatePassword,
                     ),
-                    const SizedBox(height: 20),
+                    const SizedBox(height: 24),
                     ElevatedButton(
                       onPressed: () {
                         final isValid =
@@ -77,23 +80,33 @@ class _SignInScreenState extends State<SignInScreen> {
                       },
                       child: const Text('Sign In'),
                     ),
-                    RichText(
-                      text: TextSpan(
-                        style: Theme.of(context).textTheme.bodySmall,
-                        children: [
-                          const TextSpan(text: 'Doesn\'t have an account? '),
-                          TextSpan(
-                            text: 'Sign Up',
-                            recognizer: TapGestureRecognizer()
-                              ..onTap = () => Navigator.of(context)
-                                  .pushReplacementNamed('/signup'),
-                            style: const TextStyle(
-                              fontWeight: FontWeight.w600,
+                    const SizedBox(height: 12),
+                    BlocBuilder<ThemeBloc, bool>(builder: (context, state) {
+                      return RichText(
+                        text: TextSpan(
+                          style: Theme.of(context)
+                              .textTheme
+                              .titleSmall!
+                              .copyWith(fontStyle: FontStyle.normal),
+                          children: [
+                            const TextSpan(text: 'Doesn\'t have an account? '),
+                            TextSpan(
+                              text: 'Sign Up',
+                              recognizer: TapGestureRecognizer()
+                                ..onTap = () => Navigator.of(context)
+                                    .pushReplacementNamed('/signup'),
+                              style: TextStyle(
+                                fontWeight: FontWeight.w600,
+                                fontStyle: FontStyle.italic,
+                                color: state
+                                    ? AppPallete.darkPrimary
+                                    : AppPallete.lightPrimary,
+                              ),
                             ),
-                          ),
-                        ],
-                      ),
-                    ),
+                          ],
+                        ),
+                      );
+                    }),
                   ],
                 ),
               ),

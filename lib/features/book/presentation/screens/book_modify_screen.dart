@@ -4,6 +4,8 @@ import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:flutter/material.dart';
+import '../../../../core/theme/app_pallete.dart';
+import '../../../../core/theme/bloc/theme_bloc.dart';
 import '../../../../core/utils/input_validators.dart';
 import '../../data/models/book_model.dart';
 import '../../domain/entities/book_status.dart';
@@ -113,44 +115,59 @@ class _BookModifyScreenState extends State<BookModifyScreen> {
                   ),
                 ),
                 const SizedBox(height: 16),
-                DottedBorder(
-                  borderType: BorderType.RRect,
-                  dashPattern: [8, 4],
-                  radius: const Radius.circular(12),
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(12),
-                    child: FutureBuilder<bool>(
-                      future:
-                          ImageValidator.isImageTooSmall(_coverImageUrl ?? ''),
-                      builder: (context, snapshot) {
-                        // While checking, show a loading spinner or placeholder.
-                        if (snapshot.connectionState != ConnectionState.done) {
-                          return const SizedBox(
-                            height: 200,
-                            child: Center(child: CircularProgressIndicator()),
-                          );
-                        }
-                        // If image is too small or error occurred, show an error widget.
-                        if (snapshot.hasData && snapshot.data == true) {
+                BlocBuilder<ThemeBloc, bool>(builder: (context, state) {
+                  return DottedBorder(
+                    borderType: BorderType.RRect,
+                    dashPattern: [8, 4],
+                    radius: const Radius.circular(12),
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(12),
+                      child: FutureBuilder<bool>(
+                        future: ImageValidator.isImageTooSmall(
+                            _coverImageUrl ?? ''),
+                        builder: (context, snapshot) {
+                          // While checking, show a loading spinner or placeholder.
+                          if (snapshot.connectionState !=
+                              ConnectionState.done) {
+                            return Container(
+                              color: state
+                                  ? AppPallete.darkInputFill
+                                  : AppPallete.lightInputFill,
+                              height: 200,
+                              child: const Center(
+                                  child: CircularProgressIndicator()),
+                            );
+                          }
+                          // If image is too small or error occurred, show an error widget.
+                          if (snapshot.hasData && snapshot.data == true) {
+                            return Container(
+                              color: state
+                                  ? AppPallete.darkInputFill
+                                  : AppPallete.lightInputFill,
+                              height: 200,
+                              child: const Center(
+                                child: Text('Cover image not found'),
+                              ),
+                            );
+                          }
+                          // Else, display the image normally.
                           return Container(
+                            color: state
+                                ? AppPallete.darkInputFill
+                                : AppPallete.lightInputFill,
                             height: 200,
-                            color: Colors.grey[300],
-                            child: const Center(
-                              child: Text('Cover image not found'),
+                            child: CachedNetworkImage(
+                              imageUrl: _coverImageUrl ?? '',
+                              height: 200,
+                              width: double.infinity,
+                              fit: BoxFit.contain,
                             ),
                           );
-                        }
-                        // Else, display the image normally.
-                        return CachedNetworkImage(
-                          imageUrl: _coverImageUrl ?? '',
-                          height: 200,
-                          width: double.infinity,
-                          fit: BoxFit.contain,
-                        );
-                      },
+                        },
+                      ),
                     ),
-                  ),
-                ),
+                  );
+                }),
                 const SizedBox(height: 16),
                 // Title field
                 TextFormField(

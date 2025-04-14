@@ -28,6 +28,7 @@ class BookScreen extends StatelessWidget {
         bottomNavigationBar: TabBar(
           isScrollable: true,
           tabAlignment: TabAlignment.start,
+          labelStyle: Theme.of(context).textTheme.labelMedium,
           tabs: [
             Tab(text: BookStatus.finished.readable),
             Tab(text: BookStatus.inProgress.readable),

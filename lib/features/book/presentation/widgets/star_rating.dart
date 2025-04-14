@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
+import '../../../../core/theme/app_pallete.dart';
+import '../../../../core/theme/bloc/theme_bloc.dart';
 
 class StarRating extends StatelessWidget {
   final double rating;
@@ -8,28 +12,28 @@ class StarRating extends StatelessWidget {
     required this.rating,
   });
 
-  Widget buildStarRating(double rating) {
+  Widget buildStarRating(double rating, Color color) {
     List<Widget> stars = [];
     for (int i = 1; i <= 5; i++) {
       if (rating >= i) {
         stars.add(
-          const Icon(
+          Icon(
             Icons.star,
-            color: Colors.amber,
+            color: color,
           ),
         );
       } else if (rating >= i - 0.5) {
         stars.add(
-          const Icon(
+          Icon(
             Icons.star_half,
-            color: Colors.amber,
+            color: color,
           ),
         );
       } else {
         stars.add(
-          const Icon(
+          Icon(
             Icons.star_border,
-            color: Colors.amber,
+            color: color,
           ),
         );
       }
@@ -39,6 +43,9 @@ class StarRating extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return buildStarRating(rating);
+    final isDark = context.watch<ThemeBloc>().state
+        ? AppPallete.darkStars
+        : AppPallete.lightStars;
+    return buildStarRating(rating, isDark);
   }
 }

@@ -1,5 +1,3 @@
-import 'dart:io';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -8,6 +6,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'core/bloc/app_bloc_observer.dart';
 import 'core/presentation/screens/not_found_screen.dart';
+import 'core/theme/app_theme.dart';
+import 'core/theme/bloc/theme_bloc.dart';
 import 'features/auth/presentation/bloc/auth_bloc.dart';
 import 'features/auth/presentation/screens/sign_in_screen.dart';
 import 'features/auth/presentation/screens/sign_up_screen.dart';
@@ -62,37 +62,45 @@ class MyApp extends StatelessWidget {
             readBook: di.sl(),
           )..add(const BooksLoadRequested()),
         ),
+        BlocProvider(
+          create: (_) => ThemeBloc()..add(ThemeLoad()),
+        ),
       ],
-      child: MaterialApp(
-        title: 'TrackReads',
-        theme: ThemeData(
-          colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-          useMaterial3: true,
-        ),
-        home: const AuthWrapper(),
-        onGenerateRoute: (settings) {
-          // Handle static routes
-          if (settings.name == '/signin') {
-            return MaterialPageRoute(builder: (_) => const SignInScreen());
-          } else if (settings.name == '/signup') {
-            return MaterialPageRoute(builder: (_) => const SignUpScreen());
-          } else if (settings.name == '/books') {
-            return MaterialPageRoute(builder: (_) => const BookScreen());
-          } else if (settings.name == '/books/add') {
-            return MaterialPageRoute(builder: (_) => const BookModifyScreen());
-          } else if (settings.name == '/books/details') {
-            return MaterialPageRoute(builder: (_) => const BookDetailScreen());
-          } else if (settings.name == '/books/edit') {
-            final book = settings.arguments as BookModel?;
-            return MaterialPageRoute(
-                builder: (_) => BookModifyScreen(book: book));
-          }
+      child: BlocBuilder<ThemeBloc, bool>(
+        builder: (context, state) {
+          return MaterialApp(
+            title: 'TrackReads',
+            theme: AppTheme.light,
+            darkTheme: AppTheme.dark,
+            themeMode: state ? ThemeMode.dark : ThemeMode.light,
+            home: const AuthWrapper(),
+            onGenerateRoute: (settings) {
+              // Handle static routes
+              if (settings.name == '/signin') {
+                return MaterialPageRoute(builder: (_) => const SignInScreen());
+              } else if (settings.name == '/signup') {
+                return MaterialPageRoute(builder: (_) => const SignUpScreen());
+              } else if (settings.name == '/books') {
+                return MaterialPageRoute(builder: (_) => const BookScreen());
+              } else if (settings.name == '/books/add') {
+                return MaterialPageRoute(
+                    builder: (_) => const BookModifyScreen());
+              } else if (settings.name == '/books/details') {
+                return MaterialPageRoute(
+                    builder: (_) => const BookDetailScreen());
+              } else if (settings.name == '/books/edit') {
+                final book = settings.arguments as BookModel?;
+                return MaterialPageRoute(
+                    builder: (_) => BookModifyScreen(book: book));
+              }
 
-          return null;
+              return null;
+            },
+            onUnknownRoute: (settings) => MaterialPageRoute(
+              builder: (_) => const NotFoundScreen(),
+            ),
+          );
         },
-        onUnknownRoute: (settings) => MaterialPageRoute(
-          builder: (_) => const NotFoundScreen(),
-        ),
       ),
     );
   }

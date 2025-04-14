@@ -52,14 +52,16 @@ class _BookDetailScreenState extends State<BookDetailScreen> {
                           padding: const EdgeInsets.all(8),
                           child: RichText(
                             text: TextSpan(
-                              style: Theme.of(context).textTheme.labelLarge,
+                              style: Theme.of(context).textTheme.titleLarge,
                               children: [
                                 const TextSpan(
                                   text: 'Title: ',
-                                  style: TextStyle(fontWeight: FontWeight.bold),
                                 ),
                                 TextSpan(
                                   text: book.title,
+                                  style: const TextStyle(
+                                    fontWeight: FontWeight.w400,
+                                  ),
                                 ),
                               ],
                             ),
@@ -71,7 +73,7 @@ class _BookDetailScreenState extends State<BookDetailScreen> {
                           padding: const EdgeInsets.all(8),
                           child: RichText(
                             text: TextSpan(
-                              style: Theme.of(context).textTheme.labelLarge,
+                              style: Theme.of(context).textTheme.titleSmall,
                               children: [
                                 const TextSpan(
                                   text: 'Author: ',
@@ -87,12 +89,9 @@ class _BookDetailScreenState extends State<BookDetailScreen> {
                       ),
                       if (book.coverImageUrl != null) ...[
                         Card(
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(8),
-                          ),
                           clipBehavior: Clip.antiAlias,
                           child: Padding(
-                            padding: const EdgeInsets.all(8),
+                            padding: const EdgeInsets.all(4),
                             child: SizedBox(
                               height: 240,
                               width: 150,
@@ -112,7 +111,7 @@ class _BookDetailScreenState extends State<BookDetailScreen> {
                             children: [
                               RichText(
                                 text: TextSpan(
-                                  style: Theme.of(context).textTheme.labelLarge,
+                                  style: Theme.of(context).textTheme.labelSmall,
                                   children: [
                                     const TextSpan(
                                       text: 'Status: ',
@@ -140,13 +139,18 @@ class _BookDetailScreenState extends State<BookDetailScreen> {
                                   crossAxisAlignment:
                                       CrossAxisAlignment.stretch,
                                   children: [
-                                    const Text(
+                                    Text(
                                       'My review',
-                                      style: TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                      ),
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .titleLarge,
                                     ),
-                                    Text(book.review!),
+                                    Text(
+                                      book.review!,
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .bodyMedium,
+                                    ),
                                   ],
                                 ),
                               ),

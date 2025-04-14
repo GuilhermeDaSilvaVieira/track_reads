@@ -24,9 +24,10 @@ class BookTab extends StatelessWidget {
           final books =
               state.books.where((book) => book.status == status).toList();
           if (books.isEmpty) {
-            return const Center(
+            return Center(
               child: Text(
                 'This list is currently empty.\nClick the + button below to add a new book',
+                style: Theme.of(context).textTheme.bodyLarge,
               ),
             );
           }
@@ -49,9 +50,10 @@ class BookTab extends StatelessWidget {
         } else if (state is BookOperationFailure) {
           return Center(child: Text('Error: ${state.error}'));
         }
-        return const Center(
+        return Center(
           child: Text(
             'This list is currently empty.\nClick the + button below to add a new book',
+            style: Theme.of(context).textTheme.bodyLarge,
           ),
         );
       },

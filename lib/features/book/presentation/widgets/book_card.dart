@@ -40,9 +40,6 @@ class BookCard extends StatelessWidget {
           Navigator.of(context).pushNamed('/books/details');
         },
         child: Card(
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(4),
-          ),
           child: Padding(
             padding: const EdgeInsets.all(8),
             child: Row(
@@ -66,7 +63,7 @@ class BookCard extends StatelessWidget {
                     children: [
                       Text(
                         title,
-                        style: Theme.of(context).textTheme.titleMedium,
+                        style: Theme.of(context).textTheme.titleLarge,
                         maxLines: 2,
                         overflow: TextOverflow.ellipsis,
                       ),
