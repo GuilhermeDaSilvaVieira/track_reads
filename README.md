@@ -32,7 +32,7 @@ Target completion: **April 13, 2025**
 - [x] Firestore Collections for Book Lists
 - [ ] Open Library Search Integration
 - [x] Ratings & Reviews
-- [ ] UI Polishing
+- [x] UI Polishing
 - [ ] Final Testing
 
 ---
