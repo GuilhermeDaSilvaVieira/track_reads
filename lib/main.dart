@@ -37,7 +37,7 @@ void main() async {
     await FirebaseAuth.instance.setPersistence(Persistence.LOCAL);
   }
 
-  di.setupInjections();
+  await di.setupInjections();
   runApp(const MyApp());
 }
 
@@ -65,7 +65,9 @@ class MyApp extends StatelessWidget {
           )..add(const BooksLoadRequested()),
         ),
         BlocProvider(
-          create: (_) => ThemeBloc()..add(ThemeLoad()),
+          create: (_) => ThemeBloc(
+            prefs: di.sl(),
+          )..add(ThemeLoad()),
         ),
         BlocProvider(
           create: (_) => SearchBloc(
