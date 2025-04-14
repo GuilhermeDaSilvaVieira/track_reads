@@ -65,7 +65,7 @@ To get started with the app, follow the steps below:
 
 2. Navigate into the project directory:
    ```bash
-   cd notx
+   cd track_reads
    ```
 
 3. Install dependencies:
