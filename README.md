@@ -2,6 +2,8 @@
 
 **TrackReads** is a cross-platform Book Tracker app built with Flutter and Firebase. It helps users keep track of books they want to read, are currently reading, or have finished, with real-time syncing, book search, and review features.
 
+https://github.com/user-attachments/assets/93dac6e8-e65d-4545-a93a-2c3c87dc0a66
+
 ## 🚀 Features (MVP Scope)
 - 🔐 **Authentication** with Firebase (Email/Password)
 - 📖 **Book Search** using Open Library API
