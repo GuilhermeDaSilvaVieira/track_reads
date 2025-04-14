@@ -1,12 +1,14 @@
 import '../datasources/book_firebase_datasource.dart';
+import '../datasources/open_library_api_datasource.dart';
 import '../models/book_model.dart';
 import '../../domain/entities/book.dart';
 import '../../domain/repositories/book_repository.dart';
 
 class BookRepositoryImpl implements BookRepository {
   final BookFirebaseDataSource dataSource;
+  final OpenLibraryAPIDataSource openLibraryAPIDataSource;
 
-  BookRepositoryImpl(this.dataSource);
+  BookRepositoryImpl(this.dataSource, this.openLibraryAPIDataSource);
 
   @override
   Future<void> createBook(Book book) async {
@@ -35,5 +37,11 @@ class BookRepositoryImpl implements BookRepository {
   @override
   Future<void> deleteBook(String id) async {
     await dataSource.deleteBook(id);
+  }
+
+  @override
+  Future<List<Book>> searchBooks(String query) async {
+    final bookModels = await openLibraryAPIDataSource.fetchBooks(query);
+    return bookModels;
   }
 }

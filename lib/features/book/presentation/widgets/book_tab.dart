@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../domain/entities/book_status.dart';
-import '../bloc/book_bloc.dart';
+import '../bloc/book/book_bloc.dart';
 import 'book_card.dart';
 
 class BookTab extends StatelessWidget {

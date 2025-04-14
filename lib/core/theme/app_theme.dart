@@ -124,6 +124,14 @@ class AppTheme {
         elevation: 2,
         color: AppPallete.lightCardBackground,
       ),
+
+      // ListTile Theme
+      listTileTheme: ListTileThemeData(
+        tileColor: AppPallete.lightInputFill,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(4),
+        ),
+      ),
     );
   }
 
@@ -242,6 +250,14 @@ class AppTheme {
         ),
         elevation: 2,
         color: AppPallete.darkCardBackground,
+      ),
+
+      // ListTile Theme
+      listTileTheme: ListTileThemeData(
+        tileColor: AppPallete.darkInputFill,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(4),
+        ),
       ),
     );
   }

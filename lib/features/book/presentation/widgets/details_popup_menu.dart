@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import '../../../../core/theme/app_pallete.dart';
 import '../../data/models/book_model.dart';
-import '../bloc/book_bloc.dart';
+import '../bloc/book/book_bloc.dart';
 import '../models/details_menu_option.dart';
 
 class DetailsPopupMenu extends StatelessWidget {
@@ -20,7 +21,10 @@ class DetailsPopupMenu extends StatelessWidget {
           case DetailsMenuOption.edit:
             Navigator.of(context).pushNamed(
               '/books/edit',
-              arguments: book,
+              arguments: {
+                'book': book,
+                'isFromSearch': false,
+              },
             );
             break;
           case DetailsMenuOption.delete:
@@ -71,6 +75,7 @@ class DetailsPopupMenu extends StatelessWidget {
         PopupMenuItem<DetailsMenuOption>(
           value: DetailsMenuOption.edit,
           child: ListTile(
+            tileColor: AppPallete.transparent,
             leading: const Icon(Icons.edit),
             title: Text(DetailsMenuOption.edit.readable),
           ),
@@ -78,6 +83,7 @@ class DetailsPopupMenu extends StatelessWidget {
         PopupMenuItem<DetailsMenuOption>(
           value: DetailsMenuOption.delete,
           child: ListTile(
+            tileColor: AppPallete.transparent,
             leading: const Icon(Icons.delete),
             title: Text(DetailsMenuOption.delete.readable),
           ),

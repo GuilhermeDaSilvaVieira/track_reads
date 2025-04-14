@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../../../core/theme/app_pallete.dart';
 import '../../domain/entities/book_status.dart';
 import '../widgets/book_tab.dart';
 import '../widgets/books_popup_menu.dart';
@@ -47,15 +48,18 @@ class BookScreen extends StatelessWidget {
                     ListTile(
                       leading: const Icon(Icons.keyboard),
                       title: const Text('Add book manually'),
+                      tileColor: AppPallete.transparent,
                       onTap: () {
                         Navigator.of(context).pushNamed('/books/add');
                       },
                     ),
                     ListTile(
-                      enabled: false,
                       leading: const Icon(Icons.search),
                       title: const Text('Search in Open Library'),
-                      onTap: () {},
+                      tileColor: AppPallete.transparent,
+                      onTap: () {
+                        Navigator.of(context).pushNamed('/books/search');
+                      },
                     ),
                   ],
                 );

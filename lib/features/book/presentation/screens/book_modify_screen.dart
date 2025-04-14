@@ -9,14 +9,20 @@ import '../../../../core/theme/bloc/theme_bloc.dart';
 import '../../../../core/utils/input_validators.dart';
 import '../../data/models/book_model.dart';
 import '../../domain/entities/book_status.dart';
-import '../bloc/book_bloc.dart';
+import '../bloc/book/book_bloc.dart';
 import '../models/book_form_model.dart';
 import '../utils/half_step_input_formatter.dart';
 import '../utils/image_validator.dart';
 
 class BookModifyScreen extends StatefulWidget {
   final BookModel? book;
-  const BookModifyScreen({super.key, this.book});
+  final bool? isFromSearch;
+
+  const BookModifyScreen({
+    super.key,
+    this.book,
+    this.isFromSearch = false,
+  });
 
   @override
   State<BookModifyScreen> createState() => _BookModifyScreenState();
@@ -88,8 +94,10 @@ class _BookModifyScreenState extends State<BookModifyScreen> {
     return Scaffold(
       appBar: AppBar(
         title: widget.book == null
-            ? const Text('Add a new book')
-            : const Text('Edit Book'),
+            ? const Text('Add Book Manually')
+            : widget.isFromSearch!
+                ? const Text('Add Book From Search')
+                : const Text('Edit Book'),
       ),
       body: SingleChildScrollView(
         child: Padding(
@@ -240,7 +248,8 @@ class _BookModifyScreenState extends State<BookModifyScreen> {
                     final isValid = _formKey.currentState?.validate() ?? false;
 
                     if (isValid) {
-                      if (widget.book != null) {
+                      // Edit Book
+                      if (widget.book != null && !widget.isFromSearch!) {
                         final BookModel book = BookModel(
                           id: widget.book!.id,
                           creator: widget.book!.creator,
@@ -258,7 +267,31 @@ class _BookModifyScreenState extends State<BookModifyScreen> {
 
                         context.read<BookBloc>().add(BookUpdateRequested(book));
                         Navigator.of(context).pop();
-                      } else {
+                      }
+                      // Add Book From Search
+                      else if (widget.book != null && widget.isFromSearch!) {
+                        final BookFormModel book = BookFormModel(
+                          title: _titleController.text.trim(),
+                          author: _authorController.text.trim(),
+                          status: _status,
+                          coverImageUrl: _coverImageUrl,
+                          rating: _ratingController.text.trim().isNotEmpty
+                              ? double.parse(_ratingController.text.trim())
+                              : null,
+                          review: _reviewController.text.trim().isNotEmpty
+                              ? _reviewController.text.trim()
+                              : null,
+                        );
+
+                        context
+                            .read<BookBloc>()
+                            .add(BookCreateRequested(book.toDomainEntity()));
+                        Navigator.of(context).pop();
+                        Navigator.of(context).pop();
+                        Navigator.of(context).pop();
+                      }
+                      // Add Book Manually
+                      else {
                         final BookFormModel book = BookFormModel(
                           title: _titleController.text.trim(),
                           author: _authorController.text.trim(),

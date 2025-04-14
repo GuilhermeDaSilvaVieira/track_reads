@@ -85,4 +85,22 @@ class BookModel extends Book {
       'creator': creator,
     };
   }
+
+  factory BookModel.fromJson(Map<String, dynamic> json) {
+    return BookModel(
+      id: '',
+      creator: '',
+      title: json['title'] ?? 'No Title',
+      author: (json['author_name'] != null &&
+              (json['author_name'] as List).isNotEmpty)
+          ? json['author_name'][0]
+          : 'Unknown Author',
+      coverImageUrl: json['cover_edition_key'] != null
+          ? 'https://covers.openlibrary.org/b/olid/${json['cover_edition_key']!}-L.jpg'
+          : null,
+      status: BookStatus.wishlist,
+      rating: null,
+      review: '',
+    );
+  }
 }

@@ -13,10 +13,12 @@ import 'features/auth/presentation/screens/sign_in_screen.dart';
 import 'features/auth/presentation/screens/sign_up_screen.dart';
 import 'features/auth/presentation/widgets/auth_wrapper.dart';
 import 'features/book/data/models/book_model.dart';
-import 'features/book/presentation/bloc/book_bloc.dart';
+import 'features/book/presentation/bloc/book/book_bloc.dart';
+import 'features/book/presentation/bloc/search/search_bloc.dart';
 import 'features/book/presentation/screens/book_detail_screen.dart';
 import 'features/book/presentation/screens/book_modify_screen.dart';
 import 'features/book/presentation/screens/book_screen.dart';
+import 'features/book/presentation/screens/book_search_screen.dart';
 import 'firebase_options.dart';
 import 'core/service_locator.dart' as di;
 
@@ -65,6 +67,11 @@ class MyApp extends StatelessWidget {
         BlocProvider(
           create: (_) => ThemeBloc()..add(ThemeLoad()),
         ),
+        BlocProvider(
+          create: (_) => SearchBloc(
+            searchBooks: di.sl(),
+          ),
+        ),
       ],
       child: BlocBuilder<ThemeBloc, bool>(
         builder: (context, state) {
@@ -85,13 +92,22 @@ class MyApp extends StatelessWidget {
               } else if (settings.name == '/books/add') {
                 return MaterialPageRoute(
                     builder: (_) => const BookModifyScreen());
+              } else if (settings.name == '/books/search') {
+                return MaterialPageRoute(
+                    builder: (_) => const BookSearchScreen());
               } else if (settings.name == '/books/details') {
                 return MaterialPageRoute(
                     builder: (_) => const BookDetailScreen());
               } else if (settings.name == '/books/edit') {
-                final book = settings.arguments as BookModel?;
+                final args = settings.arguments as Map;
+                final book = args['book'] as BookModel?;
+                final isFromSearch = args['isFromSearch'] as bool?;
                 return MaterialPageRoute(
-                    builder: (_) => BookModifyScreen(book: book));
+                  builder: (_) => BookModifyScreen(
+                    book: book,
+                    isFromSearch: isFromSearch,
+                  ),
+                );
               }
 
               return null;

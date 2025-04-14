@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import '../../../../core/theme/app_pallete.dart';
 import '../../../../core/theme/bloc/theme_bloc.dart';
 import '../../../auth/presentation/bloc/auth_bloc.dart';
 import '../models/books_menu_option.dart';
@@ -71,6 +72,7 @@ class BooksPopupMenu extends StatelessWidget {
           enabled: false,
           value: BooksMenuOption.sort,
           child: ListTile(
+            tileColor: AppPallete.transparent,
             leading: const Icon(Icons.sort),
             title: Text(BooksMenuOption.sort.readable),
           ),
@@ -79,6 +81,7 @@ class BooksPopupMenu extends StatelessWidget {
           enabled: false,
           value: BooksMenuOption.filter,
           child: ListTile(
+            tileColor: AppPallete.transparent,
             leading: const Icon(Icons.filter_list),
             title: Text(BooksMenuOption.filter.readable),
           ),
@@ -86,6 +89,7 @@ class BooksPopupMenu extends StatelessWidget {
         PopupMenuItem<BooksMenuOption>(
           value: BooksMenuOption.switchTheme,
           child: ListTile(
+            tileColor: AppPallete.transparent,
             leading: const Icon(Icons.brightness_6),
             title: Text(BooksMenuOption.switchTheme.readable),
           ),
@@ -94,6 +98,7 @@ class BooksPopupMenu extends StatelessWidget {
           enabled: false,
           value: BooksMenuOption.settings,
           child: ListTile(
+            tileColor: AppPallete.transparent,
             leading: const Icon(Icons.settings),
             title: Text(BooksMenuOption.settings.readable),
           ),
@@ -101,6 +106,7 @@ class BooksPopupMenu extends StatelessWidget {
         PopupMenuItem<BooksMenuOption>(
           value: BooksMenuOption.logout,
           child: ListTile(
+            tileColor: AppPallete.transparent,
             leading: const Icon(Icons.logout),
             title: Text(BooksMenuOption.logout.readable),
           ),

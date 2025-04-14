@@ -1,11 +1,12 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../application/usecases/delete_book.dart';
-import '../../application/usecases/read_book.dart';
-import '../../application/usecases/read_books.dart';
-import '../../application/usecases/update_book.dart';
-import '../../application/usecases/create_book.dart';
-import '../../domain/entities/book.dart';
+
+import '../../../application/usecases/create_book.dart';
+import '../../../application/usecases/delete_book.dart';
+import '../../../application/usecases/read_book.dart';
+import '../../../application/usecases/read_books.dart';
+import '../../../application/usecases/update_book.dart';
+import '../../../domain/entities/book.dart';
 
 part 'book_event.dart';
 part 'book_state.dart';

@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../data/models/book_model.dart';
 import '../../domain/entities/book_status.dart';
-import '../bloc/book_bloc.dart';
+import '../bloc/book/book_bloc.dart';
 import '../widgets/details_popup_menu.dart';
 import '../widgets/star_rating.dart';
 
