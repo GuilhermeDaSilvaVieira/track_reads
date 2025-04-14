@@ -60,7 +60,7 @@ To get started with the app, follow the steps below:
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/guilhermedasilvavieira/notx.git
+   git clone https://github.com/guilhermedasilvavieira/track_reads.git
    ```
 
 2. Navigate into the project directory:
