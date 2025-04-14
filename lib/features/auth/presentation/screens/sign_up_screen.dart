@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../core/theme/app_pallete.dart';
 import '../../../../core/theme/bloc/theme_bloc.dart';
 import '../../../../core/utils/input_validators.dart';
+import '../../../book/presentation/bloc/book/book_bloc.dart';
 import '../bloc/auth_bloc.dart';
 
 class SignUpScreen extends StatefulWidget {
@@ -36,6 +37,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
           }
 
           if (state is AuthSuccess) {
+            context.read<BookBloc>().add(const BooksLoadRequested());
             Navigator.of(context).pushReplacementNamed('/books');
           }
         },

@@ -1,8 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-
-import '../../../book/presentation/bloc/book/book_bloc.dart';
 
 class AuthWrapper extends StatelessWidget {
   const AuthWrapper({super.key});
@@ -22,7 +19,6 @@ class AuthWrapper extends StatelessWidget {
         // If user is signed in, navigate to /books
         if (snapshot.hasData && snapshot.data != null) {
           WidgetsBinding.instance.addPostFrameCallback((_) {
-            context.read<BookBloc>().add(const BooksLoadRequested());
             Navigator.of(context).pushReplacementNamed('/books');
           });
           // Return an empty scaffold while navigation occurs
